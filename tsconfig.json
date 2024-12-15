@@ -10,6 +10,10 @@
     }
   ],
   "compilerOptions": {
-    "types": ["element-plus/global"]
+    "types": ["element-plus/global"],
+    "checkJs": false,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false
   }
 }
