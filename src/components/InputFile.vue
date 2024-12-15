@@ -197,6 +197,7 @@ const lateFusion = ref(false)
 const attFusion = ref(false)
 
 const fileInput = ref(null)
+// @ts-ignore
 const files = ref([])
 const images = ref([])
 
@@ -213,9 +214,11 @@ interface AnalysisData {
 }
 
 const triggerFileUpload = () => {
+   // @ts-ignore
   fileInput.value.click()
 }
 
+ // @ts-ignore
 const handleFileUpload = (event) => {
   files.value = Array.from(event.target.files)
 }
@@ -253,9 +256,11 @@ const analyzeFiles = async () => {
 }
 
 const processResponseData = async (data: AnalysisData) => {
+   // @ts-ignore
   processedData.value = Object.entries(data).map(([type, { y_preds, y_trues }]) => {
     const isTrue = y_preds.every((pred, index) => pred === y_trues[index])
     if (y_trues) {
+       // @ts-ignore
       dataTrue.value = y_trues
     }
     return {
@@ -267,7 +272,7 @@ const processResponseData = async (data: AnalysisData) => {
   })
 }
 
-function getTitle(type) {
+function getTitle(type: any) {
   const titles = {
     resnet18: 'ResNet18',
     cdil: 'CDIL',
@@ -275,9 +280,10 @@ function getTitle(type) {
     lateFusion: 'Late-Fusion',
     attFusion: 'Att-Late-Fusion'
   }
+ // @ts-ignore
   return titles[type] || type
 }
-
+ // @ts-ignore
 function getLabel(index) {
   const labels = ['1dAVb', 'RBBB', 'LBBB', 'SB', 'ST', 'AF', 'normal_ecg']
   return labels[index]

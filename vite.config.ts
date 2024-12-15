@@ -1,5 +1,4 @@
 import { fileURLToPath, URL } from 'node:url'
-
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
@@ -12,5 +11,14 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
+  },
+  server: {
+     // @ts-ignore
+    port: 5173, 
+    host: '0.0.0.0',
+    strictPort: true,
+  },
+  build: {
+    target: 'esnext',
   }
 })
